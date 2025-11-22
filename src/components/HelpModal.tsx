@@ -51,7 +51,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                             </div>
                             <div className="flex items-center gap-2">
                                 <div className="w-4 h-4 min-w-[1rem] bg-red-500 rounded shrink-0"></div>
-                                <span><strong>RED:</strong> Don't refresh! Spam detection active.</span>
+                                <span><strong>RED:</strong> Don't refresh! Bot detection active.</span>
                             </div>
                         </div>
                     </section>
