@@ -2,9 +2,10 @@ import React from 'react';
 
 interface BrowserFrameProps {
     children: React.ReactNode;
+    onHelpClick?: () => void;
 }
 
-export const BrowserFrame: React.FC<BrowserFrameProps> = ({ children }) => {
+export const BrowserFrame: React.FC<BrowserFrameProps> = ({ children, onHelpClick }) => {
     return (
         <div className="w-full max-w-4xl mx-auto h-full bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col border border-slate-300">
             {/* Browser Chrome */}
@@ -20,6 +21,18 @@ export const BrowserFrame: React.FC<BrowserFrameProps> = ({ children }) => {
                     <span className="text-slate-400">🔒</span>
                     <span className="truncate">glastle.buytickets.com/queue</span>
                 </div>
+
+                {/* Help Button */}
+                {onHelpClick && (
+                    <button
+                        onClick={onHelpClick}
+                        className="w-7 h-7 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded flex items-center justify-center font-bold text-sm transition-colors"
+                        aria-label="Help"
+                        title="Help"
+                    >
+                        ?
+                    </button>
+                )}
             </div>
 
             {/* Content Area */}

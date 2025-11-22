@@ -32,9 +32,8 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                     <section>
                         <h3 className="text-lg font-bold text-slate-900 mb-2">🎮 Controls</h3>
                         <ul className="text-sm space-y-1 list-disc list-inside">
-                            <li><strong>Click REFRESH button</strong> to refresh the page</li>
-                            <li><strong>Press SPACEBAR</strong> (desktop) to refresh quickly</li>
-                            <li><strong>Click power-ups</strong> when they appear to collect them</li>
+                            <li>Tap or space bar to refresh</li>
+                            <li>Tap or click on power up</li>
                         </ul>
                     </section>
 
@@ -66,21 +65,27 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                                 <p className="font-bold text-green-900 mb-2">✅ Helpful Power-ups</p>
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg">💻</span>
+                                        <span className="text-lg">💻✨</span>
                                         <div>
-                                            <strong>New Computer:</strong> Major queue jump forward!
+                                            <strong>New Computer:</strong> Big queue jump, no bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg">🌍</span>
+                                        <span className="text-lg">🌍✔️</span>
                                         <div>
-                                            <strong>Good VPN:</strong> Decent queue progress.
+                                            <strong>Good VPN:</strong> Good queue jump, no bot harm
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-2">
+                                        <span className="text-lg">🌐</span>
+                                        <div>
+                                            <strong>New Browser:</strong> Decent queue jump, no bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
                                         <span className="text-lg">🕵️</span>
                                         <div>
-                                            <strong>Incognito Mode:</strong> Smooth queue advancement.
+                                            <strong>New Incognito Tab:</strong> Small queue jump, no bot harm
                                         </div>
                                     </div>
                                 </div>
@@ -91,15 +96,15 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                                 <p className="font-bold text-red-900 mb-2">⚠️ Harmful Power-ups</p>
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg">🌐</span>
+                                        <span className="text-lg">➕📄</span>
                                         <div>
-                                            <strong>Bad VPN:</strong> Increases bot detection risk.
+                                            <strong>New Tab:</strong> Small queue jump, some bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg">🔗</span>
+                                        <span className="text-lg">🌍❌</span>
                                         <div>
-                                            <strong>New Tab:</strong> Raises suspicion flags.
+                                            <strong>Bad VPN:</strong> Small queue jump, big bot harm
                                         </div>
                                     </div>
                                 </div>
@@ -107,15 +112,6 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                         </div>
                     </section>
 
-                    {/* Winning */}
-                    <section>
-                        <h3 className="text-lg font-bold text-slate-900 mb-2">🏆 Win Conditions</h3>
-                        <ul className="text-sm space-y-1 list-disc list-inside">
-                            <li>Reach the front of the queue (0 position)</li>
-                            <li>Keep bot detection below 100%</li>
-                            <li>Complete before tickets sell out (2 minutes)</li>
-                        </ul>
-                    </section>
                 </div>
 
                 <button

@@ -304,15 +304,7 @@ function App() {
 
     return (
         <div className="h-[100dvh] w-screen bg-slate-800 flex items-center justify-center p-2 pb-[env(safe-area-inset-bottom,20px)] font-sans overflow-hidden supports-[height:100dvh]:h-[100dvh]">
-            {/* Help Button */}
-            <button
-                onClick={() => setShowHelp(true)}
-                className="fixed top-4 right-4 z-40 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold text-lg hover:bg-slate-700 transition-colors shadow-lg"
-                aria-label="Help"
-            >
-                ?
-            </button>
-            <BrowserFrame>
+            <BrowserFrame onHelpClick={() => setShowHelp(true)}>
                 {/* Header */}
                 <div className="p-3 md:p-6 bg-white border-b border-slate-100">
                     <div className="flex justify-center mb-3 md:mb-6">
