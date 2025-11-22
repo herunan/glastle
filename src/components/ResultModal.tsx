@@ -32,6 +32,7 @@ export const ResultModal: React.FC<ResultModalProps> = ({ result, stats, onPlayA
         switch (result) {
             case 'win': return 'You got Glastle tickets!';
             case 'bot': return 'You have been removed from the queue due to bot-like behaviour.';
+            case 'soldOut': return "Time's up! Tickets sold out.";
             case 'lostPlace': return 'You appear to have lost your place in the queue.';
             default: return '';
         }
@@ -55,7 +56,7 @@ export const ResultModal: React.FC<ResultModalProps> = ({ result, stats, onPlayA
         const timeStr = formatTime(stats.timeElapsed);
 
         let text = '';
-        const baseText = `I just played Glastle - the Glastonbury ticket queue game\n`;
+        const baseText = `I just played Glastle\nThe Glastonbury ticket queue game\n`;
         const scoreLine = `⏱️ ${timeStr} 🔄 ${stats.refreshes} 🟩 ${filledSegments}/${totalSegments}\n`;
         const linkLine = `Play at https://glastle.surge.sh`;
 
