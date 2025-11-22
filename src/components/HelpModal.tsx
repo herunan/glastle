@@ -42,15 +42,15 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                         <h3 className="text-lg font-bold text-slate-900 mb-2">⏱️ Timing is Everything</h3>
                         <div className="space-y-2 text-sm">
                             <div className="flex items-center gap-2">
-                                <div className="w-4 h-4 bg-green-500 rounded"></div>
+                                <div className="w-4 h-4 min-w-[1rem] bg-green-500 rounded shrink-0"></div>
                                 <span><strong>GREEN:</strong> Perfect time to refresh! Move forward in queue.</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <div className="w-4 h-4 bg-amber-400 rounded"></div>
+                                <div className="w-4 h-4 min-w-[1rem] bg-amber-400 rounded shrink-0"></div>
                                 <span><strong>AMBER:</strong> Risky! May increase bot detection.</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <div className="w-4 h-4 bg-red-500 rounded"></div>
+                                <div className="w-4 h-4 min-w-[1rem] bg-red-500 rounded shrink-0"></div>
                                 <span><strong>RED:</strong> Don't refresh! Spam detection active.</span>
                             </div>
                         </div>
