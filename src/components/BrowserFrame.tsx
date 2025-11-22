@@ -9,7 +9,7 @@ export const BrowserFrame: React.FC<BrowserFrameProps> = ({ children, onHelpClic
     return (
         <div className="w-full max-w-4xl mx-auto h-full bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col border border-slate-300">
             {/* Browser Chrome */}
-            <div className="bg-slate-100 border-b border-slate-300 p-3 flex items-center gap-4 shrink-0">
+            <div className="bg-slate-100 border-b border-slate-300 p-3 pr-2 flex items-center gap-2 shrink-0">
                 <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500 border border-red-600"></div>
                     <div className="w-3 h-3 rounded-full bg-amber-500 border border-amber-600"></div>
