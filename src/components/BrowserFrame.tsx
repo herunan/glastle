@@ -26,7 +26,7 @@ export const BrowserFrame: React.FC<BrowserFrameProps> = ({ children, onHelpClic
                 {onHelpClick && (
                     <button
                         onClick={onHelpClick}
-                        className="w-7 h-7 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded flex items-center justify-center font-bold text-sm transition-colors"
+                        className="w-7 h-7 min-w-[1.75rem] bg-slate-200 hover:bg-slate-300 text-slate-700 rounded flex items-center justify-center font-bold text-sm transition-colors shrink-0"
                         aria-label="Help"
                         title="Help"
                     >
