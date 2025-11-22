@@ -79,13 +79,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                                     <div className="flex items-start gap-2">
                                         <span className="text-lg">🌐</span>
                                         <div>
-                                            <strong>New Browser:</strong> Decent queue jump, no bot harm
+                                            <strong>New Browser:</strong> Good queue jump, some bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
                                         <span className="text-lg">🕵️</span>
                                         <div>
-                                            <strong>New Incognito Tab:</strong> Small queue jump, no bot harm
+                                            <strong>New Incognito Tab:</strong> Small queue jump, some bot harm
                                         </div>
                                     </div>
                                 </div>
@@ -98,13 +98,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                                     <div className="flex items-start gap-2">
                                         <span className="text-lg">➕📄</span>
                                         <div>
-                                            <strong>New Tab:</strong> Small queue jump, some bot harm
+                                            <strong>New Tab:</strong> No queue jump, some bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
                                         <span className="text-lg">🌍❌</span>
                                         <div>
-                                            <strong>Bad VPN:</strong> Small queue jump, big bot harm
+                                            <strong>Bad VPN:</strong> No queue jump, big bot harm
                                         </div>
                                     </div>
                                 </div>
