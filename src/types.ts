@@ -44,7 +44,7 @@ export const ITEM_CONFIG: Record<FallingItemType, {
     // FAKE POWERUPS (Only hurt bot detection)
     newTab: {
         label: 'New Tab',
-        icon: '➕📄',
+        icon: '📄',
         queueEffect: 0,
         riskEffect: 15,
         message: 'Opening tabs is suspicious...',
@@ -52,7 +52,7 @@ export const ITEM_CONFIG: Record<FallingItemType, {
     },
     badVpn: {
         label: 'Bad VPN',
-        icon: '🌍❌',
+        icon: '🔒❌',
         queueEffect: 0,
         riskEffect: 25,
         message: 'Suspicious IP detected!',
@@ -80,7 +80,7 @@ export const ITEM_CONFIG: Record<FallingItemType, {
     // SAFE POWERUPS (Help queue, no risk)
     goodVpn: {
         label: 'Good VPN',
-        icon: '🌍✔️',
+        icon: '🔒✔️',
         queueEffect: -1500,
         riskEffect: 0,
         message: 'Clean connection established.',
@@ -88,7 +88,7 @@ export const ITEM_CONFIG: Record<FallingItemType, {
     },
     newComputer: {
         label: 'New Computer',
-        icon: '💻✨',
+        icon: '💻',
         queueEffect: -3000,
         riskEffect: 0,
         message: 'Fresh device ID detected.',

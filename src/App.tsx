@@ -321,7 +321,7 @@ function App() {
 
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [gameState.gameOver, showHelp]);
+    }, [gameState.gameOver, showHelp, handleRefresh]);
 
     const showToast = (msg: string) => {
         setToastMessage(msg);

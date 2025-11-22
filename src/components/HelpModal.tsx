@@ -65,13 +65,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                                 <p className="font-bold text-green-900 mb-2">✅ Helpful Power-ups</p>
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg whitespace-nowrap">💻✨</span>
+                                        <span className="text-lg whitespace-nowrap">💻</span>
                                         <div>
                                             <strong>New Computer:</strong> Big queue jump, no bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg whitespace-nowrap">🌍✔️</span>
+                                        <span className="text-lg whitespace-nowrap">🔒✔️</span>
                                         <div>
                                             <strong>Good VPN:</strong> Good queue jump, no bot harm
                                         </div>
@@ -103,13 +103,13 @@ export const HelpModal: React.FC<HelpModalProps> = ({ onClose }) => {
                                 <p className="font-bold text-red-900 mb-2">🚫 Harmful Power-ups</p>
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg whitespace-nowrap">➕📄</span>
+                                        <span className="text-lg whitespace-nowrap">📄</span>
                                         <div>
                                             <strong>New Tab:</strong> No queue jump, some bot harm
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-2">
-                                        <span className="text-lg whitespace-nowrap">🌍❌</span>
+                                        <span className="text-lg whitespace-nowrap">🔒❌</span>
                                         <div>
                                             <strong>Bad VPN:</strong> No queue jump, big bot harm
                                         </div>
