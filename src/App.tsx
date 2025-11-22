@@ -44,6 +44,7 @@ function App() {
     const gameStartTimeRef = useRef<number>(0);
     const consecutiveGreenRefreshesRef = useRef<number>(0);
     const lastBadItemSpawnTimeRef = useRef<number>(0);
+    const pauseStartTimeRef = useRef<number | null>(null);
 
     // Cycle management
     const cycleStateRef = useRef({
@@ -90,6 +91,18 @@ function App() {
             localStorage.setItem('glastle_visited', 'true');
         }
     }, []);
+
+    // Track pause time when help modal opens/closes
+    useEffect(() => {
+        if (showHelp) {
+            pauseStartTimeRef.current = Date.now();
+        } else if (pauseStartTimeRef.current !== null) {
+            // Adjust game start time by pause duration
+            const pauseDuration = Date.now() - pauseStartTimeRef.current;
+            gameStartTimeRef.current += pauseDuration;
+            pauseStartTimeRef.current = null;
+        }
+    }, [showHelp]);
 
     // Initialize game on mount
     useEffect(() => {
@@ -158,10 +171,24 @@ function App() {
                 setTimingPhase(cs.phase);
             }
 
-            // 2. Update Sold Out Progress
-            const timeElapsed = now - gameStartTimeRef.current;
-            const soldOutPct = (timeElapsed / SOLD_OUT_TIME_MS) * 100;
+            // 3. Update Sold Out Progress (pause when help is open)
+            if (!showHelp) {
+                const elapsedMs = now - gameStartTimeRef.current;
+                const soldOutPct = (elapsedMs / SOLD_OUT_TIME_MS) * 100;
+                setGameState(prev => ({
+                    ...prev,
+                    soldOutProgress: Math.min(100, soldOutPct)
+                }));
 
+                if (soldOutPct >= 100 && !gameState.gameOver) {
+                    setGameState(prev => ({
+                        ...prev,
+                        gameOver: true,
+                        gameResult: 'soldOut'
+                    }));
+                    return;
+                }
+            }
             // 3. Random Bad Item Spawns
             if (timestamp - lastBadItemSpawnTimeRef.current > 3000) { // Check every 3s
                 if (rngRef.current.next() > 0.6) { // 40% chance
@@ -178,8 +205,7 @@ function App() {
 
                 return {
                     ...prev,
-                    fallingItems: nextItems,
-                    soldOutProgress: soldOutPct
+                    fallingItems: nextItems
                 };
             });
 
