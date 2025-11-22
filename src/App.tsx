@@ -278,7 +278,7 @@ function App() {
 
     return (
 
-        <div className="h-screen w-screen bg-slate-800 flex items-center justify-center p-2 font-sans overflow-hidden">
+        <div className="h-[100dvh] w-screen bg-slate-800 flex items-center justify-center p-2 pb-[env(safe-area-inset-bottom,20px)] font-sans overflow-hidden supports-[height:100dvh]:h-[100dvh]">
             <BrowserFrame>
                 {/* Header */}
                 <div className="p-3 md:p-6 bg-white border-b border-slate-100">
@@ -302,7 +302,7 @@ function App() {
                     <h2 className="text-base md:text-lg text-slate-800 mb-2 md:mb-4 font-medium">You are now in the Glastle ticket sale queue!</h2>
                     <ul className="text-xs md:text-sm text-slate-600 space-y-1 md:space-y-3 list-disc list-inside">
                         <li>Refresh at the right time to move forward in the queue.</li>
-                        <li>Power-ups will appear to help you, but beware of fake ones that increase bot detection!</li>
+                        <li>Power-ups will appear to help you, but beware of some that may affect bot detection!</li>
                     </ul>
                 </div>
 

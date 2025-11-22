@@ -41,7 +41,7 @@ export const PlayField: React.FC<PlayFieldProps> = ({ items, onItemClick, messag
                         }}
                     >
                         <div className="flex flex-col items-center animate-bounce">
-                            <div className="text-2xl filter drop-shadow-md bg-white/90 rounded-full p-2 border-2 border-slate-100">{config.icon}</div>
+                            <div className="text-2xl filter drop-shadow-md bg-white/90 rounded-full p-2 border-2 border-slate-100 whitespace-nowrap flex">{config.icon}</div>
                             <span className={`text-[10px] font-bold bg-white/90 px-1 rounded shadow-sm mt-1 whitespace-nowrap ${config.color}`}>
                                 {config.label}
                             </span>

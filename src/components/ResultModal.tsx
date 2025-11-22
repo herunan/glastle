@@ -45,38 +45,28 @@ export const ResultModal: React.FC<ResultModalProps> = ({ result, stats, onPlayA
         return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
+    // Calculate bars (logic matches QueueDisplay)
+    const maxQueue = 50000;
+    const progressPct = Math.max(0, Math.min(100, ((maxQueue - stats.queuePosition) / maxQueue) * 100));
+    const totalSegments = 40;
+    const filledSegments = Math.floor((progressPct / 100) * totalSegments);
+
     const handleShare = async () => {
         const timeStr = formatTime(stats.timeElapsed);
 
-        // Calculate bars (logic matches QueueDisplay)
-        const maxQueue = 50000;
-        const progressPct = Math.max(0, Math.min(100, ((maxQueue - stats.queuePosition) / maxQueue) * 100));
-        const totalSegments = 40;
-        const filledSegments = Math.floor((progressPct / 100) * totalSegments);
-
         let text = '';
+        const baseText = `I just played Glastle - the Glastonbury ticket queue game\n`;
+        const scoreLine = `⏱️ ${timeStr} 🔄 ${stats.refreshes} 🟩 ${filledSegments}/${totalSegments}\n`;
+        const linkLine = `Play at https://glastle.surge.sh`;
 
         if (result === 'bot') {
-            text = `I just played Glastle - the Glastonbury ticket queue game\n` +
-                `Result: 🤖\n` +
-                `Score: ⏱️ ${timeStr} 🔄 ${stats.refreshes} 🟩 ${filledSegments}/${totalSegments}\n` +
-                `Play at glastle.surge.sh`;
+            text = `${baseText}Result: 🤖\n${scoreLine}${linkLine}`;
         } else if (result === 'soldOut') {
-            text = `I just played Glastle - the Glastonbury ticket queue game\n` +
-                `Result: 🫴\n` +
-                `Score: ⏱️ ${timeStr} 🔄 ${stats.refreshes} 🟩 ${filledSegments}/${totalSegments}\n` +
-                `Play at glastle.surge.sh`;
+            text = `${baseText}Result: 🫴\n${scoreLine}${linkLine}`;
         } else if (result === 'win') {
-            text = `I just played Glastle - the Glastonbury ticket queue game\n` +
-                `Result: 🎟️\n` +
-                `Score: ⏱️ ${timeStr} 🔄 ${stats.refreshes} 🟩 ${filledSegments}/${totalSegments}\n` +
-                `Play at glastle.surge.sh`;
+            text = `${baseText}Result: 🎟️\n${scoreLine}${linkLine}`;
         } else {
-            // Default/Fallback
-            text = `I just played Glastle - the Glastonbury ticket queue game\n` +
-                `Result: 📉\n` +
-                `Score: ⏱️ ${timeStr} 🔄 ${stats.refreshes} 🟩 ${filledSegments}/${totalSegments}\n` +
-                `Play at glastle.surge.sh`;
+            text = `${baseText}Result: 📉\n${scoreLine}${linkLine}`;
         }
 
         try {
@@ -102,7 +92,7 @@ export const ResultModal: React.FC<ResultModalProps> = ({ result, stats, onPlayA
                     {getSubtext()}
                 </p>
 
-                <div className="bg-slate-50 rounded-lg p-4 mb-6 grid grid-cols-3 gap-4 text-sm">
+                <div className="bg-slate-50 rounded-lg p-4 mb-6 grid grid-cols-2 gap-4 text-sm">
                     <div>
                         <p className="text-slate-500">Refreshes</p>
                         <p className="font-bold text-slate-900">{stats.refreshes}</p>
@@ -116,6 +106,10 @@ export const ResultModal: React.FC<ResultModalProps> = ({ result, stats, onPlayA
                     <div>
                         <p className="text-slate-500">Time</p>
                         <p className="font-bold text-slate-900">{formatTime(stats.timeElapsed)}</p>
+                    </div>
+                    <div>
+                        <p className="text-slate-500">Queue Progress</p>
+                        <p className="font-bold text-slate-900">{filledSegments}/{totalSegments}</p>
                     </div>
                 </div>
 
