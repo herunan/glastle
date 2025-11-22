@@ -6,6 +6,7 @@ import { SoldOutBar } from './components/SoldOutBar';
 import { PlayField } from './components/PlayField';
 import { RefreshControl } from './components/RefreshControl';
 import { ResultModal } from './components/ResultModal';
+import { HelpModal } from './components/HelpModal';
 import { GameState, FallingItem, FallingItemType, ITEM_CONFIG } from './types';
 import { SeededRNG } from './utils/rng';
 
@@ -34,6 +35,7 @@ function App() {
 
     const [timingPhase, setTimingPhase] = useState<'red' | 'amber' | 'green'>('red');
     const [toastMessage, setToastMessage] = useState<string | null>(null);
+    const [showHelp, setShowHelp] = useState<boolean>(false);
 
     // Refs for mutable state in loop
     const lastRefreshTimeRef = useRef<number>(0);
@@ -80,9 +82,20 @@ function App() {
         };
     }, []);
 
-    // Start game on mount
+    // Check for first-time visit
+    useEffect(() => {
+        const hasVisited = localStorage.getItem('glastle_visited');
+        if (!hasVisited) {
+            setShowHelp(true);
+            localStorage.setItem('glastle_visited', 'true');
+        }
+    }, []);
+
+    // Initialize game on mount
     useEffect(() => {
         gameStartTimeRef.current = Date.now();
+        const firstDuration = rngRef.current.rangeInt(1000, 3000);
+        cycleStateRef.current.duration = firstDuration;
     }, []);
 
     // Helper to spawn item
@@ -271,14 +284,34 @@ function App() {
         showToast(config.message);
     };
 
+    // Keyboard controls (after handleRefresh is defined)
+    useEffect(() => {
+        const handleKeyPress = (e: KeyboardEvent) => {
+            if (e.code === 'Space' && !gameState.gameOver && !showHelp) {
+                e.preventDefault();
+                handleRefresh();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, [gameState.gameOver, showHelp]);
+
     const showToast = (msg: string) => {
         setToastMessage(msg);
         setTimeout(() => setToastMessage(null), 1500);
     };
 
     return (
-
         <div className="h-[100dvh] w-screen bg-slate-800 flex items-center justify-center p-2 pb-[env(safe-area-inset-bottom,20px)] font-sans overflow-hidden supports-[height:100dvh]:h-[100dvh]">
+            {/* Help Button */}
+            <button
+                onClick={() => setShowHelp(true)}
+                className="fixed top-4 right-4 z-40 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold text-lg hover:bg-slate-700 transition-colors shadow-lg"
+                aria-label="Help"
+            >
+                ?
+            </button>
             <BrowserFrame>
                 {/* Header */}
                 <div className="p-3 md:p-6 bg-white border-b border-slate-100">
@@ -344,6 +377,11 @@ function App() {
                         }}
                         onPlayAgain={resetGame}
                     />
+                )}
+
+                {/* Help Modal */}
+                {showHelp && (
+                    <HelpModal onClose={() => setShowHelp(false)} />
                 )}
             </BrowserFrame>
         </div>
