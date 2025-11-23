@@ -81,12 +81,12 @@ export const ResultModal: React.FC<ResultModalProps> = ({ result, stats, onPlayA
 
     return (
         <div className="absolute inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300">
-            <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 text-center border border-slate-200 mb-32">
+            <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 text-center border border-slate-200 mb-20 max-h-[85vh] overflow-y-auto">
                 <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center text-3xl mb-4 ${isWin ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
                     {isWin ? '🎟️' : '🚫'}
                 </div>
 
-                <h2 className="text-2xl font-bold text-slate-900 mb-2 leading-tight">
+                <h2 className="text-xl font-bold text-slate-900 mb-2 leading-tight">
                     {getTitle()}
                 </h2>
                 <p className="text-slate-600 mb-6">
